@@ -5,8 +5,12 @@ namespace ApiSistemaGeek.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ProdutosController : ControllerBase
     {
+
+
+        
+
 
 
 
