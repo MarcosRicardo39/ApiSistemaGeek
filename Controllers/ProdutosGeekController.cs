@@ -18,7 +18,7 @@ namespace ApiSistemaGeek.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var dados = await _context.ProdutosGeek.ToListAsync();
+            var dados = await _context.ProdutoGeek.ToListAsync();
             return Ok(dados);
         }
     }

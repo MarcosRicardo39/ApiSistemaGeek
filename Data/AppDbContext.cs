@@ -10,7 +10,7 @@
             {
             }
 
-            public DbSet<ProdutosGeek> ProdutosGeek { get; set; }
+            public DbSet<ProdutosGeek> ProdutoGeek { get; set; }
         
     }
     }
