@@ -6,11 +6,11 @@ namespace ApiSistemaGeek.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProdutoGeekController : ControllerBase
+    public class ProdutosGeekController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public ProdutoGeekController(AppDbContext context)
+        public ProdutosGeekController(AppDbContext context)
         {
             _context = context;
         }

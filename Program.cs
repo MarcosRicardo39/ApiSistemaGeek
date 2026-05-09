@@ -1,5 +1,4 @@
 using ApiSistemaGeek.Data;
-using ApiSistemaGeek.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
