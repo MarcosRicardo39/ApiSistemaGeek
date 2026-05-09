@@ -7,5 +7,8 @@ namespace ApiSistemaGeek.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+
+
+
     }
 }

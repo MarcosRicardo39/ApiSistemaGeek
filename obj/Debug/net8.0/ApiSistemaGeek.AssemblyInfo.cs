@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ApiSistemaGeek")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+034b7247b1cfdf286ce7b581f5fc6102675eb8b9")]
 [assembly: System.Reflection.AssemblyProductAttribute("ApiSistemaGeek")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ApiSistemaGeek")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
