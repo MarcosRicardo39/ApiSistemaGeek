@@ -1,6 +1,6 @@
 ﻿namespace ApiSistemaGeek.Model
 {
-    public class ProdutosGeek
+    public class ProdutoGeek
     {
         public int Id { get; set; }
 

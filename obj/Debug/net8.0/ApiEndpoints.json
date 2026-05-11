@@ -10,6 +10,59 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ApiSistemaGeek.Controllers.ProdutosGeekController",
+    "Method": "Post",
+    "RelativePath": "api/ProdutosGeek",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "produto",
+        "Type": "ApiSistemaGeek.Model.ProdutoGeek",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiSistemaGeek.Controllers.ProdutosGeekController",
+    "Method": "Put",
+    "RelativePath": "api/ProdutosGeek/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "produto",
+        "Type": "ApiSistemaGeek.Model.ProdutoGeek",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiSistemaGeek.Controllers.ProdutosGeekController",
+    "Method": "Delete",
+    "RelativePath": "api/ProdutosGeek/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ApiSistemaGeek.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",
