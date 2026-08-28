@@ -63,6 +63,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "UsuarioController",
+    "Method": "Post",
+    "RelativePath": "api/Usuario",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuario",
+        "Type": "ApiSistemaGeek.Model.Usuario",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UsuarioController",
+    "Method": "Login",
+    "RelativePath": "api/Usuario/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "login",
+        "Type": "ApiSistemaGeek.DTOs.ApiSistemaGeek.DTOs.LoginUsuarioDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ApiSistemaGeek.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

@@ -24,20 +24,17 @@ namespace ApiSistemaGeek.Controllers
             return Ok(dados);
         }
 
-       
+
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] ProdutoGeek produto)
         {
-            if (produto == null)
-                return BadRequest();
-
-            await _context.ProdutoGeek.AddAsync(produto);
+            _context.ProdutoGeek.Add(produto);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(Get), new { id = produto.Id }, produto);
+            return Ok(produto);
         }
 
-        
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] ProdutoGeek produto)
         {
@@ -51,6 +48,8 @@ namespace ApiSistemaGeek.Controllers
             existe.Nome = produto.Nome;
             existe.Preco = produto.Preco;
             existe.Descricao = produto.Descricao;
+            
+            
 
             _context.ProdutoGeek.Update(existe);
             await _context.SaveChangesAsync();

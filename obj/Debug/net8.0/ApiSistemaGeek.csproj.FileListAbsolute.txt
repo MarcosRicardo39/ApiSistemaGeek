@@ -138,3 +138,4 @@ C:\ProjetosPessoais\fonte\ApiSistemaGeek\ApiSistemaGeek\obj\Debug\net8.0\ApiSist
 C:\ProjetosPessoais\fonte\ApiSistemaGeek\ApiSistemaGeek\obj\Debug\net8.0\ApiSistemaGeek.genruntimeconfig.cache
 C:\ProjetosPessoais\fonte\ApiSistemaGeek\ApiSistemaGeek\obj\Debug\net8.0\ref\ApiSistemaGeek.dll
 C:\ProjetosPessoais\fonte\ApiSistemaGeek\ApiSistemaGeek\obj\Debug\net8.0\ApiSistemaGeek.sourcelink.json
+C:\ProjetosPessoais\fonte\ApiSistemaGeek\ApiSistemaGeek\bin\Debug\net8.0\ApiSistemaGeek.staticwebassets.runtime.json
