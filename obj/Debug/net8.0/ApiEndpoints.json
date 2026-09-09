@@ -71,8 +71,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "usuario",
-        "Type": "ApiSistemaGeek.Model.Usuario",
+        "Name": "cadastro",
+        "Type": "ApiSistemaGeek.DTOs.CadastroUsuarioDTO",
         "IsRequired": true
       }
     ],
@@ -88,7 +88,7 @@
     "Parameters": [
       {
         "Name": "login",
-        "Type": "ApiSistemaGeek.DTOs.ApiSistemaGeek.DTOs.LoginUsuarioDTO",
+        "Type": "ApiSistemaGeek.DTOs.LoginUsuarioDTO",
         "IsRequired": true
       }
     ],
