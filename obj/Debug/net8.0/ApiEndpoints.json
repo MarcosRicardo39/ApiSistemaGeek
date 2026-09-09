@@ -1,5 +1,53 @@
 [
   {
+    "ContainingType": "ApiSistemaGeek.Controllers.EstoqueController",
+    "Method": "Entrada",
+    "RelativePath": "api/Estoque",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entrada",
+        "Type": "ApiSistemaGeek.DTOs.EntradaEstoqueDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiSistemaGeek.Controllers.EstoqueController",
+    "Method": "Consultar",
+    "RelativePath": "api/Estoque/{produtoId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "produtoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiSistemaGeek.Controllers.EstoqueController",
+    "Method": "Saida",
+    "RelativePath": "api/Estoque/saida",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "saida",
+        "Type": "ApiSistemaGeek.DTOs.EntradaEstoqueDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ApiSistemaGeek.Controllers.PedidoController",
     "Method": "Post",
     "RelativePath": "api/Pedido",

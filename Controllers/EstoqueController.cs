@@ -50,5 +50,51 @@ namespace ApiSistemaGeek.Controllers
 
             return Ok(estoque);
         }
+
+        [HttpPost("saida")]
+        public async Task<IActionResult> Saida([FromBody] EntradaEstoqueDTO saida)
+        {
+            if (saida.Quantidade <= 0)
+                return BadRequest("A quantidade de saída deve ser maior que zero.");
+
+            var produto = await _context.ProdutoGeek
+                .FindAsync(saida.ProdutoId);
+
+            if (produto == null)
+                return NotFound("Produto não encontrado.");
+
+            var estoque = await _context.Estoques
+                .FirstOrDefaultAsync(e => e.ProdutoGeekId == saida.ProdutoId);
+
+            if (estoque == null)
+                return NotFound("Produto não possui estoque.");
+
+            if (saida.Quantidade > estoque.Quantidade)
+                return BadRequest("Quantidade de saída maior que o estoque disponível.");
+
+            estoque.Quantidade -= saida.Quantidade;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(estoque);
+        }
+
+        [HttpGet("{produtoId}")]
+        public async Task<IActionResult> Consultar(int produtoId)
+        {
+            var produto = await _context.ProdutoGeek
+                .FindAsync(produtoId);
+
+            if (produto == null)
+                return NotFound("Produto não encontrado.");
+
+            var estoque = await _context.Estoques
+                .FirstOrDefaultAsync(e => e.ProdutoGeekId == produtoId);
+
+            if (estoque == null)
+                return NotFound("Produto não possui estoque.");
+
+            return Ok(estoque);
+        }
     }
 }
