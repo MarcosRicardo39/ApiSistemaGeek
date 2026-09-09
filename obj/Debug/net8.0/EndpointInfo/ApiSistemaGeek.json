@@ -118,17 +118,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Usuario"
+                "$ref": "#/components/schemas/CadastroUsuarioDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Usuario"
+                "$ref": "#/components/schemas/CadastroUsuarioDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Usuario"
+                "$ref": "#/components/schemas/CadastroUsuarioDTO"
               }
             }
           }
@@ -213,6 +213,24 @@
   },
   "components": {
     "schemas": {
+      "CadastroUsuarioDTO": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "senha": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "LoginUsuarioDTO": {
         "type": "object",
         "properties": {
@@ -265,32 +283,6 @@
           "nota": {
             "type": "number",
             "format": "double"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Usuario": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "nome": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "senha": {
-            "type": "string",
-            "nullable": true
-          },
-          "tipoUsuario": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false

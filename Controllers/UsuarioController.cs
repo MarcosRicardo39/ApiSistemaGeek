@@ -1,5 +1,5 @@
 ﻿using ApiSistemaGeek.Data;
-using ApiSistemaGeek.DTOs.ApiSistemaGeek.DTOs;
+using ApiSistemaGeek.DTOs;
 using ApiSistemaGeek.Model;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,28 +15,54 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] Usuario usuario)
+    public async Task<IActionResult> Post([FromBody] CadastroUsuarioDTO cadastro)
     {
-        if (usuario == null)
+        if (cadastro == null)
             return BadRequest();
 
-        usuario.TipoUsuario = "Usuario";
+        var usuario = new Usuario
+        {
+            Nome = cadastro.Nome,
+            Email = cadastro.Email,
+            SenhaHash = BCrypt.Net.BCrypt.HashPassword(cadastro.Senha),
+            TipoUsuario = "Usuario"
+        };
 
         await _context.Usuarios.AddAsync(usuario);
         await _context.SaveChangesAsync();
 
-        return Ok(usuario);
+        return Ok(new
+        {
+            usuario.Id,
+            usuario.Nome,
+            usuario.Email,
+            usuario.TipoUsuario
+        });
     }
 
     [HttpPost("login")]
     public IActionResult Login([FromBody] LoginUsuarioDTO login)
     {
         var user = _context.Usuarios
-            .FirstOrDefault(x => x.Email == login.Email && x.Senha == login.Senha);
+            .FirstOrDefault(x => x.Email == login.Email);
 
         if (user == null)
             return Unauthorized("Usuário ou senha inválidos");
 
-        return Ok(user);
+        bool senhaValida = BCrypt.Net.BCrypt.Verify(
+            login.Senha,
+            user.SenhaHash
+        );
+
+        if (!senhaValida)
+            return Unauthorized("Usuário ou senha inválidos");
+
+        return Ok(new
+        {
+            user.Id,
+            user.Nome,
+            user.Email,
+            user.TipoUsuario
+        });
     }
 }
