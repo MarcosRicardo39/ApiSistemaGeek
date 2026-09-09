@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "ApiSistemaGeek.Controllers.PedidoController",
+    "Method": "Post",
+    "RelativePath": "api/Pedido",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "carrinho",
+        "Type": "System.Collections.Generic.List\u00601[[ApiSistemaGeek.Model.ProdutoGeek, ApiSistemaGeek, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ApiSistemaGeek.Controllers.ProdutosGeekController",
     "Method": "Get",
     "RelativePath": "api/ProdutosGeek",
