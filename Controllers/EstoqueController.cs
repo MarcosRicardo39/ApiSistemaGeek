@@ -1,6 +1,7 @@
 ﻿using ApiSistemaGeek.Data;
 using ApiSistemaGeek.DTOs;
 using ApiSistemaGeek.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +17,7 @@ namespace ApiSistemaGeek.Controllers
         {
             _context = context;
         }
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Entrada([FromBody] EntradaEstoqueDTO entrada)
         {
@@ -50,7 +52,7 @@ namespace ApiSistemaGeek.Controllers
 
             return Ok(estoque);
         }
-
+        [Authorize]
         [HttpPost("saida")]
         public async Task<IActionResult> Saida([FromBody] EntradaEstoqueDTO saida)
         {
@@ -78,7 +80,7 @@ namespace ApiSistemaGeek.Controllers
 
             return Ok(estoque);
         }
-
+        [Authorize]
         [HttpGet("{produtoId}")]
         public async Task<IActionResult> Consultar(int produtoId)
         {

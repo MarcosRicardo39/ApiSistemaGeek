@@ -2,6 +2,7 @@
 using ApiSistemaGeek.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ApiSistemaGeek.Controllers
 {
@@ -15,13 +16,26 @@ namespace ApiSistemaGeek.Controllers
         {
             _context = context;
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] List<ProdutoGeek> carrinho)
         {
             if (carrinho == null || carrinho.Count == 0)
                 return BadRequest("Carrinho vazio.");
 
+            foreach (var produto in carrinho)
+            {
+                var estoque = await _context.Estoques
+                    .FirstOrDefaultAsync(e => e.ProdutoGeekId == produto.Id);
+
+                if (estoque == null)
+                    return BadRequest($"Produto {produto.Id} não possui estoque.");
+
+                if (estoque.Quantidade < 1)
+                    return BadRequest($"Produto {produto.Id} está sem estoque.");
+            }
+
+            
             decimal total = carrinho.Sum(p => p.Preco);
 
             var pedido = new Pedido
@@ -33,13 +47,24 @@ namespace ApiSistemaGeek.Controllers
             await _context.Pedidos.AddAsync(pedido);
             await _context.SaveChangesAsync();
 
-            var itens = carrinho.Select(p => new PedidoItem
+           
+            var itens = new List<PedidoItem>();
+
+            foreach (var produto in carrinho)
             {
-                PedidoId = pedido.Id,
-                ProdutoGeekId = p.Id,
-                Quantidade = 1,
-                Preco = p.Preco
-            }).ToList();
+                var estoque = await _context.Estoques
+                    .FirstAsync(e => e.ProdutoGeekId == produto.Id);
+
+                estoque.Quantidade -= 1;
+
+                itens.Add(new PedidoItem
+                {
+                    PedidoId = pedido.Id,
+                    ProdutoGeekId = produto.Id,
+                    Quantidade = 1,
+                    Preco = produto.Preco
+                });
+            }
 
             await _context.PedidoItens.AddRangeAsync(itens);
             await _context.SaveChangesAsync();

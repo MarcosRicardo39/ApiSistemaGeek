@@ -2,16 +2,24 @@
 using ApiSistemaGeek.DTOs;
 using ApiSistemaGeek.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 [Route("api/[controller]")]
 [ApiController]
 public class UsuarioController : ControllerBase
 {
     private readonly AppDbContext _context;
+    private readonly IConfiguration _configuration;
 
-    public UsuarioController(AppDbContext context)
+    public UsuarioController(
+        AppDbContext context,
+        IConfiguration configuration)
     {
         _context = context;
+        _configuration = configuration;
     }
 
     [HttpPost]
@@ -57,8 +65,39 @@ public class UsuarioController : ControllerBase
         if (!senhaValida)
             return Unauthorized("Usuário ou senha inválidos");
 
+        var claims = new[]
+        {
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new Claim(ClaimTypes.Name, user.Nome),
+            new Claim(ClaimTypes.Email, user.Email),
+            new Claim(ClaimTypes.Role, user.TipoUsuario)
+        };
+
+        var key = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(
+                _configuration["Jwt:Key"]!
+            )
+        );
+
+        var credentials = new SigningCredentials(
+            key,
+            SecurityAlgorithms.HmacSha256
+        );
+
+        var token = new JwtSecurityToken(
+            issuer: _configuration["Jwt:Issuer"],
+            audience: _configuration["Jwt:Audience"],
+            claims: claims,
+            expires: DateTime.UtcNow.AddHours(2),
+            signingCredentials: credentials
+        );
+
+        var tokenString = new JwtSecurityTokenHandler()
+            .WriteToken(token);
+
         return Ok(new
         {
+            token = tokenString,
             user.Id,
             user.Nome,
             user.Email,

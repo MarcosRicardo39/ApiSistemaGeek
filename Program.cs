@@ -63,10 +63,10 @@ app.UseHttpsRedirection();
 
 app.UseCors("PermitirTudo");
 
-app.MapControllers();
-
-app.Run();
-
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();

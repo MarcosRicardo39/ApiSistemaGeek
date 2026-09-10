@@ -1,7 +1,9 @@
 ﻿using ApiSistemaGeek.Data;
 using ApiSistemaGeek.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace ApiSistemaGeek.Controllers
 {
@@ -16,7 +18,7 @@ namespace ApiSistemaGeek.Controllers
             _context = context;
         }
 
-       
+        
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -25,7 +27,7 @@ namespace ApiSistemaGeek.Controllers
         }
 
 
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] ProdutoGeek produto)
         {
@@ -34,7 +36,7 @@ namespace ApiSistemaGeek.Controllers
 
             return Ok(produto);
         }
-
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] ProdutoGeek produto)
         {
@@ -57,7 +59,7 @@ namespace ApiSistemaGeek.Controllers
             return NoContent();
         }
 
-        
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
