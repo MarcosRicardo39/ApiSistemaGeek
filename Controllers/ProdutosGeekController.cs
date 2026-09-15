@@ -34,6 +34,15 @@ namespace ApiSistemaGeek.Controllers
             _context.ProdutoGeek.Add(produto);
             await _context.SaveChangesAsync();
 
+            var estoque = new Estoque
+            {
+                ProdutoGeekId = produto.Id,
+                Quantidade = 0
+            };
+
+            _context.Estoques.Add(estoque);
+            await _context.SaveChangesAsync();
+
             return Ok(produto);
         }
         [Authorize]

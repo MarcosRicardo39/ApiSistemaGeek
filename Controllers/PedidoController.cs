@@ -29,10 +29,10 @@ namespace ApiSistemaGeek.Controllers
                     .FirstOrDefaultAsync(e => e.ProdutoGeekId == produto.Id);
 
                 if (estoque == null)
-                    return BadRequest($"Produto {produto.Id} não possui estoque.");
+                    return BadRequest($"Este Produto {produto.Nome} não possui cadastro no estoque.");
 
                 if (estoque.Quantidade < 1)
-                    return BadRequest($"Produto {produto.Id} está sem estoque.");
+                    return BadRequest($"Produto {produto.Nome} está sem estoque.");
             }
 
             
