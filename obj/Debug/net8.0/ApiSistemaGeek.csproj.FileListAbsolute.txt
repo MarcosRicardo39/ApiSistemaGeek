@@ -137,7 +137,6 @@ C:\ProjetosPessoais\fonte\ApiSistemaGeek\ApiSistemaGeek\obj\Debug\net8.0\refint\
 C:\ProjetosPessoais\fonte\ApiSistemaGeek\ApiSistemaGeek\obj\Debug\net8.0\ApiSistemaGeek.pdb
 C:\ProjetosPessoais\fonte\ApiSistemaGeek\ApiSistemaGeek\obj\Debug\net8.0\ApiSistemaGeek.genruntimeconfig.cache
 C:\ProjetosPessoais\fonte\ApiSistemaGeek\ApiSistemaGeek\obj\Debug\net8.0\ref\ApiSistemaGeek.dll
-C:\ProjetosPessoais\fonte\ApiSistemaGeek\ApiSistemaGeek\obj\Debug\net8.0\ApiSistemaGeek.sourcelink.json
 C:\ProjetosPessoais\fonte\ApiSistemaGeek\ApiSistemaGeek\bin\Debug\net8.0\ApiSistemaGeek.staticwebassets.runtime.json
 C:\ProjetosPessoais\fonte\ApiSistemaGeek\ApiSistemaGeek\bin\Debug\net8.0\BCrypt-Net-Next.dll
 C:\ProjetosPessoais\fonte\ApiSistemaGeek\ApiSistemaGeek\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
